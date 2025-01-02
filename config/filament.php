@@ -86,4 +86,5 @@ return [
 
     'livewire_loading_delay' => 'default',
 
-];
+    'theme' => ['colors' => ['primary' => '#4B0082']]];
+   

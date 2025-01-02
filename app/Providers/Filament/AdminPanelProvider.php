@@ -6,7 +6,10 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
+use App\Filament\Pages\Profile;
 use Filament\Support\Colors\Color;
+use App\Filament\Pages\EditProfile;
+use App\Http\Middleware\FilamentSettings;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -28,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->databaseNotifications()
-            ->profile()
+            ->profile(EditProfile::class, isSimple: false)
             ->sidebarFullyCollapsibleOnDesktop()
             ->login()
             ->font('Inter')
@@ -66,6 +69,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                FilamentSettings::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
