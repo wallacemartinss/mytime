@@ -33,6 +33,11 @@ class Project extends Model
         return $this->hasMany(WorkLog::class);
     }
 
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
    
 }
 

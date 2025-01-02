@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete(); // Relacionamento com o usuário
+            $table->foreignId('project_id')->nullable()->constrained('projects')->cascadeOnDelete(); // Relaciona com user_settings
+            $table->foreignId('client_id')->nullable()->constrained('clients')->cascadeOnDelete(); // Relaciona com user_settings
+            $table->date('start_date')->nullable(); 
+            $table->date('end_date')->nullable(); 
+            $table->decimal('total_hours', 8, 2)->nullable();
+            $table->decimal('total_value', 15, 2)->nullable(); // Valor total da nota fiscal
+            $table->string('status')->nullable(); // Status da nota fiscal
+            $table->string('payment_method')->nullable(); // Método de pagamento
+            $table->string('payment_status')->nullable(); // Status do pagamento
+            $table->string('payment_date')->nullable(); // Data do pagamento
+            $table->string('atachment')->nullable(); // Status do pagamento
             $table->timestamps();
+            
         });
     }
 
