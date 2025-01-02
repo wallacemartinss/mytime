@@ -12,7 +12,11 @@ use App\Models\UserSetting;
 use Filament\Resources\Resource;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Support\Facades\Auth;
+use Filament\Tables\Actions\ExportAction;
+use Filament\Tables\Actions\ImportAction;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Exports\WorkHourExporter;
+use App\Filament\Imports\WorkHourImporter;
 use App\Filament\Resources\WorkHourResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\WorkHourResource\RelationManagers;
@@ -194,6 +198,15 @@ class WorkHourResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            
+            ->headerActions([
+                ImportAction::make()
+                    ->importer(WorkHourImporter::class),
+
+                ExportAction::make()
+                    ->exporter(WorkHourExporter::class)
+
             ]);
     }
 
