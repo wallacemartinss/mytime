@@ -3,9 +3,9 @@
 return [
     'resources' => [
         'enabled' => true,
-        'label' => 'Job',
-        'plural_label' => 'Jobs',
-        'navigation_group' => 'Settings',
+        'label' => 'Fila',
+        'plural_label' => 'Filas',
+        'navigation_group' => 'Sistema',
         'navigation_icon' => 'heroicon-o-cpu-chip',
         'navigation_sort' => null,
         'navigation_count_badge' => false,
